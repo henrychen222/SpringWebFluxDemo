@@ -1,0 +1,22 @@
+# 10.8 evening
+# https://developer.okta.com/blog/2018/09/24/reactive-apis-with-spring-webflux#learn-more-about-reactive-programming-spring-webflux-and-oidc
+
+oidc:
+  issuer-uri: https://{yourOktaDomain}/oauth2/default
+  client-id: {clientId}
+  client-secret: {clientSecret}
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          okta:
+            issuer-uri: ${oidc.issuer-uri}
+        registration:
+          okta:
+            client-id: ${oidc.client-id}
+            client-secret: ${oidc.client-secret}
+      resourceserver:
+        jwt:
+          issuer-uri: ${oidc.issuer-uri}
